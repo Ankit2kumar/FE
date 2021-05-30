@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
+const REACT_APP_API = process.env.REACT_APP_API;
 class UpdateProduct extends React.Component {
 	state = {
 		product: {
@@ -18,7 +19,7 @@ class UpdateProduct extends React.Component {
 	};
 	submitData = async (e) => {
 		e.preventDefault();
-		const request = await fetch('http://localhost:3001/products', {
+		const request = await fetch(`${REACT_APP_API}/products`, {
 			method: 'POST',
 			body: JSON.stringify(this.state.product),
 			headers: {
